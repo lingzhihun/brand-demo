@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <input v-model = "username">
+    {{username}}
+
+    <a v-bind:href="url">点击一下</a>
+    <a :href="url">点击一下</a>
+    <input v-model="url">
+    <input type="button" value = "一个按钮" v-on:click="show()">
+
+    <div v-if="count==3">div1</div>
+    <div v-else-if="count==4">div2</div>
+    <div v-else="count==3">div1</div>
+    <div v-show="count==3">v-show</div>
+    <input v-model="count">
+
+    <div v-for="addr in addrs">
+      {{addr}}
+    </div>
+
+    <div v-for="(addr,index) in addrs">
+      {{(index+1)}}. {{addr}}
+    </div>
+
+  </div>
+
+
+<script src="vue.js"></script>
+<script>
+  new Vue(
+          {
+            el: "#app",
+            data() {
+              return {
+                username: "",
+                url:"https://www.baidu.com",
+                count:3,
+                addrs:["北京","上海","广州"]
+              }
+            },
+            methods:{
+              show(){
+                alert("点击按钮了");
+              }
+            }
+          });
+</script>
+</body>
+</html>
